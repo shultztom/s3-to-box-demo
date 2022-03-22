@@ -1,0 +1,16 @@
+{
+  "name": "s3-to-box-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "box-node-sdk": "^2.0.0",
+    "dotenv": "^16.0.0"
+  }
+}
