@@ -5,8 +5,8 @@ const fs = require('fs');
 
 // Global constants
 const S3_URL = 'https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/images/s3-photo-album-example.png';
-const FOLDER_ID = '0';
 const FILE_NAME = 's3Img.png';
+const FOLDER_ID = '0'; // All Files (root folder)
 
 // Initialize the SDK with your app credentials
 var sdk = new BoxSDK({
@@ -41,28 +41,6 @@ const main = async () => {
         console.log(`INFO: Logged in as ${profile.name}`)
     } catch (error) {
         return console.error(`Error: ${error.message}`); 
-    }
-
-    // Check if folder is already present
-    console.log(`INFO: Attempting to check if folder with ID ${FOLDER_ID} exists`);
-    let folderExists = false;
-    try {
-        const folderCheckResponse =  await client.folders.get('0');
-        if(folderCheckResponse){
-            folderExists = true;
-        }
-    } catch (error) {
-        folderExists = false;
-    }
-    console.log(`INFO: Folder exists: ${folderExists}`)
-   
-    if(!folderExists){
-        console.log(`INFO: Attempting to create folder with ID ${FOLDER_ID} exists`);
-        try {
-            await client.folders.create('0', 'images');
-        } catch (error) {
-            return console.error(`Error: ${error.message}`); 
-        }
     }
 
     // Downloads image from S3
